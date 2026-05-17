@@ -160,8 +160,7 @@ EMAIL_PASSWORD=your_gmail_app_password
 - Place in project root
 
 ## Share Sheet
-Share the Google Sheet with the service account email.
-
+[(https://docs.google.com/spreadsheets/d/1UgGeg1F_2NuLFdY0QzCFJ1SiUWpuR6SuTP1jX878FbE/edit?usp=sharing)]
 ---
 
 # Run Application
