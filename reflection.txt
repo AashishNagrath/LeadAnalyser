@@ -4,65 +4,88 @@ Project Overview
 ----------------
 This project is an AI-powered automated lead enrichment and business audit system designed to automate the complete workflow after a prospect submits a lead form.
 
-The system captures lead information, scrapes the submitted company website, generates personalized business insights using Gemini AI, creates a PDF audit report, and automatically emails the generated report to the prospect without any human intervention.
+The system captures lead information, scrapes the submitted company website, generates personalized business insights using Gemini AI, creates a PDF audit report, automatically emails the report to the prospect, and logs the lead data into Google Sheets.
 
-Main Features Implemented
--------------------------
-1. Lead intake form using HTML and TailwindCSS
-2. Backend workflow automation using FastAPI
-3. Website scraping and company data enrichment using BeautifulSoup
-4. AI-generated business analysis using Gemini API
-5. Automated PDF report generation using ReportLab
-6. Automated email delivery with PDF attachment using Gmail SMTP
-7. End-to-end workflow execution after form submission
+The primary objective was to build a reliable end-to-end workflow that demonstrates practical AI integration and real-world automation capabilities.
+
+Implemented Features
+--------------------
+1. Lead intake form
+2. Website scraping and enrichment
+3. AI-generated business analysis using Gemini API
+4. PDF report generation
+5. Automatic email delivery with PDF attachment
+6. Google Sheets lead logging
+7. Google Drive PDF archival attempt with fallback handling
+8. End-to-end workflow automation
 
 Technical Decisions
 -------------------
-I chose Python and FastAPI because they allowed rapid development of automation workflows and easy integration with AI, scraping, PDF generation, and email services.
+Python and FastAPI were selected because they provide a clean and efficient environment for automation workflows, AI integrations, and API development.
 
-Gemini API was selected because it provides a generous free tier while still generating high-quality business analysis content.
+Gemini API was chosen due to:
+- Free tier availability
+- Fast response times
+- Strong text generation quality
+- Easy Python integration
 
-Initially, I attempted to use WeasyPrint for HTML-based PDF generation, but dependency issues on Windows caused instability. To ensure reliability and faster execution, I switched to ReportLab for PDF creation.
+BeautifulSoup and requests were used for website scraping because they are lightweight and reliable for extracting public website information.
 
-The frontend was intentionally kept lightweight to prioritize workflow automation and report generation quality, which were the primary requirements of the assessment.
+Initially, WeasyPrint was considered for HTML-based PDF rendering. However, Windows dependency issues created instability during development. To maintain reliability and faster execution, the implementation was switched to ReportLab for PDF generation.
+
+The frontend was intentionally kept lightweight using HTML and TailwindCSS so development effort could focus primarily on the automation workflow and AI-generated output quality.
 
 Challenges Faced
 ----------------
-1. Handling website scraping variability across different websites
+1. Handling website scraping inconsistencies across different websites
 2. Managing Gemini API rate limits and error handling
 3. Configuring Gmail SMTP authentication using App Passwords
-4. Fixing WeasyPrint dependency issues on Windows
-5. Designing prompts that generated personalized and non-generic AI outputs
+4. Resolving WeasyPrint dependency issues on Windows
+5. Structuring prompts to generate personalized and business-focused AI outputs
+6. Handling Google Drive service account storage limitations
 
-How AI Tools Were Used
-----------------------
-AI tools were used to:
-- Improve prompt engineering for business analysis
-- Assist in debugging integration issues
-- Explore alternative implementation approaches
-- Accelerate development and workflow structuring
+AI Usage During Development
+---------------------------
+AI tools were used during development for:
+- Prompt engineering refinement
+- Debugging assistance
+- Exploring implementation approaches
+- Improving workflow structure
+- Accelerating development
 
-However, all architectural decisions, debugging, integrations, and workflow implementation were understood and validated manually during development.
+All architectural decisions, integrations, debugging, and workflow implementations were manually validated and understood during development.
+
+Error Handling & Reliability
+----------------------------
+The system includes graceful error handling for:
+- Failed AI requests
+- Invalid scraping responses
+- SMTP authentication issues
+- Optional Google Drive upload failures
+
+The workflow was designed so that failures in optional components do not interrupt the core business audit generation process.
 
 Limitations
 -----------
 1. Some websites may block scraping requests
-2. The report quality depends on the quality of publicly available website content
-3. The system currently uses basic scraping and does not include advanced search enrichment
-4. PDF styling is functional but can be improved further
-5. Email delivery depends on SMTP configuration
+2. AI analysis quality depends on publicly available website content
+3. The project currently uses basic scraping and enrichment techniques
+4. Google Drive uploads using service accounts are limited on personal Google accounts without OAuth or Shared Drives
+5. PDF design can be visually improved further
 
 Future Improvements
 -------------------
-1. Improve PDF visual design and branding
-2. Add Google Sheets logging and Google Drive archiving
-3. Add asynchronous background task processing
-4. Improve website enrichment using additional public APIs
-5. Add dashboard and lead management interface
-6. Add deployment monitoring and analytics
+1. Improved PDF branding and visual design
+2. Advanced enrichment APIs and competitor analysis
+3. Asynchronous background task processing
+4. Admin dashboard for lead management
+5. Deployment monitoring and analytics
+6. OAuth-based Google Drive uploads
+7. Multi-page professional report layouts
+8. Frontend UX improvements
 
 Conclusion
 ----------
-This project demonstrates the implementation of a complete AI-powered automation workflow that combines web scraping, AI-generated insights, document generation, and automated communication into a single end-to-end system.
+This project demonstrates the implementation of a complete AI-powered automation workflow that combines web scraping, AI-generated analysis, document generation, email automation, and lead tracking into a single end-to-end system.
 
-The primary focus was on creating a reliable, maintainable, and fully functional workflow that delivers a personalized experience immediately after lead submission.
+The primary focus throughout development was reliability, maintainability, workflow automation, and delivering a personalized experience immediately after lead submission without requiring human intervention.
