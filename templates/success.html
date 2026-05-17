@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Success</title>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white shadow-2xl rounded-2xl p-10 max-w-xl text-center">
+
+        <div class="text-6xl mb-4">
+            ✅
+        </div>
+
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">
+            Report Generated Successfully
+        </h1>
+
+        <p class="text-gray-600 mb-6">
+            A personalized AI-powered lead analysis report has been generated and emailed successfully.
+        </p>
+
+        <div class="bg-gray-100 rounded-lg p-4 text-left mb-6">
+
+            <p class="mb-2">
+                <strong>Name:</strong> {{ name }}
+            </p>
+
+            <p class="mb-2">
+                <strong>Company:</strong> {{ company }}
+            </p>
+
+            <p>
+                <strong>Email:</strong> {{ email }}
+            </p>
+
+        </div>
+
+        <a href="/"
+           class="inline-block bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition">
+
+            Submit Another Lead
+
+        </a>
+
+    </div>
+
+</body>
+</html>

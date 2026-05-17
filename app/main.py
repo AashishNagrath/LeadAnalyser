@@ -19,8 +19,10 @@ async def home(request: Request):
         name="index.html"
     )
 
+
 @app.post("/submit")
 async def submit_form(
+    request: Request,
     name: str = Form(...),
     email: str = Form(...),
     company: str = Form(...),
@@ -106,7 +108,12 @@ async def submit_form(
             "message": analysis
         }
 
-    return {
-        "status": "success",
-        "analysis": analysis
-    }
+    return templates.TemplateResponse(
+        request=request,
+        name="success.html",
+        context={
+            "name": name,
+            "company": company,
+            "email": email
+        }
+    )
