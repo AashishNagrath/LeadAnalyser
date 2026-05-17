@@ -1,3 +1,5 @@
+import os
+
 from reportlab.platypus import (
     SimpleDocTemplate,
     Paragraph,
@@ -9,6 +11,8 @@ from reportlab.lib.pagesizes import letter
 
 
 def generate_pdf_report(name, company, analysis):
+    
+    os.makedirs("generated_reports", exist_ok=True)
 
     output_path = f"generated_reports/{company}.pdf"
 
