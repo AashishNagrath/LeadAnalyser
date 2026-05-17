@@ -5,6 +5,8 @@ from app.scraper import scrape_website
 from app.ai_service import generate_business_analysis
 from app.pdf_service import generate_pdf_report
 from app.email_service import send_email_with_report
+from app.sheets_service import log_lead_to_sheet
+
 
 app = FastAPI()
 
@@ -62,6 +64,17 @@ async def submit_form(
     )
 
     print("\nEMAIL SENT SUCCESSFULLY")
+    
+    
+    log_lead_to_sheet(
+    name=name,
+    email=email,
+    company=company,
+    website=website,
+    status="Report Sent"
+    )
+
+    print("\nLEAD LOGGED TO GOOGLE SHEETS")
 
 
     if "Error:" in analysis:
