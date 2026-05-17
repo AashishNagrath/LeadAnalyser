@@ -11,7 +11,7 @@ The system captures lead information, enriches company data through website scra
 ## Deployed Application
 
 ```text
-https://your-render-url.onrender.com
+https://leadanalyser.onrender.com
 ```
 
 > Note:

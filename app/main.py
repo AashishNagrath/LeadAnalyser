@@ -5,8 +5,6 @@ from app.scraper import scrape_website
 from app.ai_service import generate_business_analysis
 from app.pdf_service import generate_pdf_report
 from app.email_service import send_email_with_report
-from app.sheets_service import log_lead_to_sheet
-from app.drive_service import upload_pdf_to_drive
 
 app = FastAPI()
 
@@ -70,6 +68,8 @@ async def submit_form(
     #google drive upload
     try:
 
+        from app.drive_service import upload_pdf_to_drive
+
         drive_file_id = upload_pdf_to_drive(pdf_path)
 
         print("\nPDF UPLOADED TO GOOGLE DRIVE")
@@ -79,9 +79,11 @@ async def submit_form(
 
         print("\nGOOGLE DRIVE UPLOAD FAILED")
         print(e)
-    
+        
     #sheets logging
     try:
+
+        from app.sheets_service import log_lead_to_sheet
 
         log_lead_to_sheet(
             name=name,
@@ -97,7 +99,6 @@ async def submit_form(
 
         print("\nGOOGLE SHEETS LOGGING FAILED")
         print(e)
-
 
     if "Error:" in analysis:
         return {
