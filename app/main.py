@@ -81,15 +81,22 @@ async def submit_form(
         print(e)
     
     #sheets logging
-    log_lead_to_sheet(
-    name=name,
-    email=email,
-    company=company,
-    website=website,
-    status="Report Sent"
-    )
+    try:
 
-    print("\nLEAD LOGGED TO GOOGLE SHEETS")
+        log_lead_to_sheet(
+            name=name,
+            email=email,
+            company=company,
+            website=website,
+            status="Report Sent"
+        )
+
+        print("\nLEAD LOGGED TO GOOGLE SHEETS")
+
+    except Exception as e:
+
+        print("\nGOOGLE SHEETS LOGGING FAILED")
+        print(e)
 
 
     if "Error:" in analysis:

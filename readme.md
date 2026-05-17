@@ -6,6 +6,19 @@ The system captures lead information, enriches company data through website scra
 
 ---
 
+# Live Deployment
+
+## Deployed Application
+
+```text
+https://your-render-url.onrender.com
+```
+
+> Note:
+> Since the project is deployed on Render free tier, the application may take a few seconds to wake up after inactivity.
+
+---
+
 # Features
 
 ## Core Workflow
@@ -94,6 +107,7 @@ LeadFormAnalyser/
 │
 ├── requirements.txt
 ├── reflection.txt
+├── render.yaml
 ├── credentials.json
 ├── .env
 └── README.md
@@ -159,8 +173,9 @@ EMAIL_PASSWORD=your_gmail_app_password
 - Download `credentials.json`
 - Place in project root
 
-## Share Sheet
-[(https://docs.google.com/spreadsheets/d/1UgGeg1F_2NuLFdY0QzCFJ1SiUWpuR6SuTP1jX878FbE/edit?usp=sharing)]
+## Share Google Sheet
+Share the sheet with the service account email from `credentials.json`.
+
 ---
 
 # Run Application
@@ -177,12 +192,45 @@ http://127.0.0.1:8000
 
 ---
 
+# Deployment
+
+The application is deployed using:
+
+- Render (Free Tier)
+- FastAPI
+- GitHub Continuous Deployment
+
+## Deployment Notes
+
+The deployed version focuses primarily on the core AI workflow:
+
+- Website scraping
+- AI analysis
+- PDF generation
+- Automatic email delivery
+
+### Google Sheets & Google Drive on Deployment
+
+Google Sheets logging and Google Drive archival were fully implemented and tested locally.
+
+However, these features are disabled in the deployed public version because the deployment environment does not securely include the private `credentials.json` service account file required for Google API authentication.
+
+This was intentionally excluded from the public repository for security reasons.
+
+Additionally:
+- Google Drive uploads using service accounts on personal Google accounts have quota limitations unless OAuth or Shared Drives are configured.
+
+The primary workflow continues functioning even if optional integrations fail.
+
+---
+
 # Key Engineering Decisions
 
 - FastAPI was selected for rapid API development and workflow orchestration.
 - Gemini API was chosen for its free-tier availability and strong AI generation quality.
 - ReportLab was used instead of WeasyPrint to avoid Windows dependency issues and ensure reliable PDF generation.
-- The frontend was intentionally lightweight to prioritize automation workflow quality and backend functionality.
+- The frontend was intentionally lightweight to prioritize workflow automation and backend reliability.
+- Optional services were designed with graceful fallback handling to prevent non-critical failures from interrupting the primary workflow.
 
 ---
 
@@ -190,12 +238,13 @@ http://127.0.0.1:8000
 
 The system includes:
 - API error handling
-- Graceful failure handling
+- Graceful fallback handling
 - Scraping fallback logic
 - Email authentication validation
+- Google Sheets failure handling
 - Google Drive upload fallback handling
 
-The workflow is designed so that optional failures do not interrupt the core report generation process.
+The workflow is designed so that optional failures do not interrupt the core business audit generation process.
 
 ---
 
@@ -203,20 +252,23 @@ The workflow is designed so that optional failures do not interrupt the core rep
 
 - Some websites may block scraping requests.
 - AI output quality depends on available website content.
-- Google Drive uploads may require additional OAuth configuration for production-scale deployment.
-- PDF styling can be enhanced further.
+- Google Drive uploads may require OAuth-based authentication for production-scale deployment.
+- Google Sheets and Drive integrations require private credentials that are intentionally excluded from the public deployment.
+- PDF styling can be improved further.
 
 ---
 
 # Future Improvements
 
-- Improved PDF design and branding
-- Asynchronous task queues
+- Improved PDF branding and visual design
+- Asynchronous background task processing
 - Advanced enrichment APIs
 - Admin dashboard
 - Authentication system
 - Analytics and monitoring
 - Better frontend UX
+- OAuth-based Google integrations
+- Multi-page report layouts
 
 ---
 
