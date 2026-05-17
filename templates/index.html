@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimplifIQ AI Audit</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-lg">
+
+        <h1 class="text-3xl font-bold mb-2 text-center">
+            AI Business Audit
+        </h1>
+
+        <p class="text-gray-600 mb-6 text-center">
+            Get your personalized AI-powered business audit report.
+        </p>
+
+        <form action="/submit" method="post" class="space-y-4">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                required
+                class="w-full border p-3 rounded-lg"
+            >
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+                class="w-full border p-3 rounded-lg"
+            >
+
+            <input
+                type="text"
+                name="company"
+                placeholder="Company Name"
+                required
+                class="w-full border p-3 rounded-lg"
+            >
+
+            <input
+                type="url"
+                name="website"
+                placeholder="Company Website"
+                required
+                class="w-full border p-3 rounded-lg"
+            >
+
+            <button
+                type="submit"
+                class="w-full bg-black text-white p-3 rounded-lg hover:bg-gray-800"
+            >
+                Generate Audit Report
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>
